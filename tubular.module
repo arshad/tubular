@@ -4,3 +4,28 @@
  * @file
  * Tubular is a jQuery plugin that lets you set a YouTube video as your page background
  */
+
+/**
+ * Implements hook_init().
+ */
+function tubular_init() {
+  
+}
+
+/**
+ * Implements hook_menu().
+ */
+function tubular_menu() {
+  $items = array();
+  
+  $items['admin/config/user-interface/tubular'] = array(
+    'title' => 'Tubular',
+    'description' => 'Configuration for Tubular plugin',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tubular_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'tubular.admin.inc',
+  );
+  
+  return $items;
+}
