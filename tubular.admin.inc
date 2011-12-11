@@ -21,7 +21,7 @@ function tubular_admin_settings() {
   $form['tubular_wrapper_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Wrapper ID'),
-    '#description' => t('The ID of the wrapper div'),
+    '#description' => t('The ID of the wrapper div without the #, eg. page-wrapper'),
     '#default_value' => variable_get('tubular_wrapper_id', ''),
   );
   
