@@ -17,5 +17,11 @@ function tubular_admin_settings() {
     '#description' => t('Video ID of the Youtube video'),
   );
   
+  $form['tubular_wrapper'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Wrapper ID'),
+    '#description' => t('The ID of the wrapper div'),
+  );
+  
   return system_settings_form($form);
 }

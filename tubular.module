@@ -9,7 +9,15 @@
  * Implements hook_init().
  */
 function tubular_init() {
-  
+  drupal_add_js(tubular_swfobject_js_path());
+  drupal_add_js(tubular_js_path());
+  drupal_add_js(array(
+    'tubular' => array(
+      'videoID' => variable_get('tubular_video_id', ''),
+      'wrapperID' => variable_get('tubular_wrapper_id', ''),
+    ),
+  ), 'setting');
+  drupal_add_js(drupal_get_path('module', 'tubular') . '/tubular.js');
 }
 
 /**
@@ -28,4 +36,36 @@ function tubular_menu() {
   );
   
   return $items;
+}
+
+/**
+ * Returns the path to the Tubular JavaScript file.
+ *
+ * @return mixed
+ *   The path to the JavaScript file or FALSE if no file could be found.
+ */
+function tubular_js_path() {
+  $path = libraries_get_path('tubular');
+
+  if (file_exists($path . '/js/jquery.tubular.js')) {
+    return $path . '/js/jquery.tubular.js';
+  }
+
+  return FALSE;
+}
+
+/**
+ * Returns the path to the swfobject JavaScript file.
+ *
+ * @return mixed
+ *   The path to the JavaScript file or FALSE if no file could be found.
+ */
+function tubular_swfobject_js_path() {
+  $path = libraries_get_path('swfobject');
+
+  if (file_exists($path . '/swfobject.js')) {
+    return $path . '/swfobject.js';
+  }
+
+  return FALSE;
 }
