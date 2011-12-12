@@ -10,6 +10,10 @@
  */
 function tubular_init() {
   if (tubular_is_enabled()) {
+    //add css file
+    drupal_add_css(drupal_get_path('module', 'tubular') . '/tubular.css');
+    
+    //add js file
     drupal_add_js(tubular_swfobject_js_path());
     drupal_add_js(tubular_js_path());
     drupal_add_js(array(
