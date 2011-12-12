@@ -6,12 +6,10 @@
       // Play/Pause
       $('.videoPause').click(function(e) {
         e.preventDefault();
-        if ($(this).hasClass('videoPaused')) {
+        if (ytplayer.getPlayerState() == 2) { //2 is paused state
           ytplayer.playVideo();
-          $(this).removeClass('videoPaused');
         } else {
           ytplayer.pauseVideo();
-          $(this).addClass('videoPaused');
         }
         return false;
       });
@@ -19,12 +17,10 @@
       // Mute/Unmute
       $('.videoMute').click(function(e) {
         e.preventDefault();
-        if ($(this).hasClass('videoMuted')) {
-          ytplayer.mute();
-          $(this).removeClass('videoMuted');
-        } else {
+        if (ytplayer.isMuted()) {
           ytplayer.unMute();
-          $(this).addClass('videoMuted');
+        } else {
+          ytplayer.mute();
         }
         return false;
       });
