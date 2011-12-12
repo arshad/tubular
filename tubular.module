@@ -32,7 +32,7 @@ function tubular_init() {
 function tubular_menu() {
   $items = array();
   
-  $items['admin/config/user-interface/tubular'] = array(
+  $items['admin/settings/tubular'] = array(
     'title' => 'Tubular',
     'description' => 'Configuration for Tubular plugin',
     'page callback' => 'drupal_get_form',
@@ -114,7 +114,7 @@ function tubular_block_view($delta = '') {
  *  TRUE if tubular is enabled on the current path
  */
 function tubular_is_enabled() {
-  return (drupal_match_path(current_path(), variable_get('tubular_pages'))
+  return (drupal_match_path(strtolower($_GET['q']), variable_get('tubular_pages', ''))
     && variable_get('tubular_video_id', '') != ''
     && variable_get('tubular_wrapper_id', '') != '');
 }
