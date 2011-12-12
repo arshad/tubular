@@ -4,7 +4,8 @@
       $('body').tubular(Drupal.settings.tubular.videoID, Drupal.settings.tubular.wrapperID);
       
       // Play/Pause
-      $('#videoPause').click(function() {
+      $('#videoPause').click(function(e) {
+        e.preventDefault();
         if ($(this).hasClass('videoPaused')) {
           ytplayer.playVideo();
           $(this).removeClass('videoPaused');
@@ -16,7 +17,8 @@
       });
       
       // Mute/Unmute
-      $('#videoMute').click(function() {
+      $('#videoMute').click(function(e) {
+        e.preventDefault();
         if ($(this).hasClass('videoMute')) {
           ytplayer.mute();
           $(this).removeClass('videoMute');
@@ -27,8 +29,9 @@
         return false;
       });
       
-      // Nuke video (for slow connections -- stops loading entirely)
-      $('#videoStop').click(function() {
+      // Stop
+      $('#videoStop').click(function(e) {
+        e.preventDefault();
         ytplayer.stopVideo();
         ytplayer.clearVideo();
         $('#yt-container').hide();

@@ -41,6 +41,34 @@ function tubular_menu() {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function tubular_theme() {
+  return array(
+    'tubular_buttons' => array(
+      'variables' => array('buttons' => NULL),
+      'file' => 'tubular.pages.inc',
+    ),
+    'tubular_button' => array(
+      'variables' => array('button' => NULL),
+      'file' => 'tubular.pages.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tubular_page_alter(&$page) {
+  if (tubular_is_enabled()) {
+    $page['page_bottom']['tubular'] = array(
+        '#type' => 'markup',
+        '#markup' => theme('tubular_buttons', array('buttons' => tubular_get_buttons())),
+    );
+  }
+}
+
+/**
  * Determines if tubular is properly configured and enabled on the current path
  *
  * @return boolean
@@ -75,6 +103,19 @@ function tubular_buttons_options() {
     $options[$key] = $button['title'];
   }
   return $options;
+}
+
+function tubular_get_buttons() {
+  $buttons = tubular_buttons();
+  $active_buttons = array();
+  
+  foreach (variable_get('tubular_buttons', array()) as $key) {
+    if (isset($buttons[$key])) {
+      $active_buttons[$key] = $buttons[$key];
+    }
+  }
+  
+  return $active_buttons;
 }
 
 /**
