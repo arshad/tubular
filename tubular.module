@@ -9,7 +9,7 @@
  * Implements hook_init().
  */
 function tubular_init() {
-  if (drupal_match_path(current_path(), variable_get('tubular_pages')) && variable_get('tubular_video_id', '') != '' && variable_get('tubular_wrapper_id', '') != '') {
+  if (tubular_is_enabled()) {
     drupal_add_js(tubular_swfobject_js_path());
     drupal_add_js(tubular_js_path());
     drupal_add_js(array(
@@ -38,6 +38,18 @@ function tubular_menu() {
   );
   
   return $items;
+}
+
+/**
+ * Determines if tubular is properly configured and enabled on the current path
+ *
+ * @return boolean
+ *  TRUE if tubular is enabled on the current path
+ */
+function tubular_is_enabled() {
+  return (drupal_match_path(current_path(), variable_get('tubular_pages'))
+    && variable_get('tubular_video_id', '') != ''
+    && variable_get('tubular_wrapper_id', '') != '');
 }
 
 /**
