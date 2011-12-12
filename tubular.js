@@ -4,7 +4,7 @@
       $('body').tubular(Drupal.settings.tubular.videoID, Drupal.settings.tubular.wrapperID);
       
       // Play/Pause
-      $('#videoPause').click(function(e) {
+      $('.videoPause').click(function(e) {
         e.preventDefault();
         if ($(this).hasClass('videoPaused')) {
           ytplayer.playVideo();
@@ -17,20 +17,20 @@
       });
       
       // Mute/Unmute
-      $('#videoMute').click(function(e) {
+      $('.videoMute').click(function(e) {
         e.preventDefault();
-        if ($(this).hasClass('videoMute')) {
+        if ($(this).hasClass('videoMuted')) {
           ytplayer.mute();
-          $(this).removeClass('videoMute');
+          $(this).removeClass('videoMuted');
         } else {
           ytplayer.unMute();
-          $(this).addClass('videoMute');
+          $(this).addClass('videoMuted');
         }
         return false;
       });
       
       // Stop
-      $('#videoStop').click(function(e) {
+      $('.videoStop').click(function(e) {
         e.preventDefault();
         ytplayer.stopVideo();
         ytplayer.clearVideo();

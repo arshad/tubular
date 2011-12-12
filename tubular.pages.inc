@@ -38,7 +38,7 @@ function theme_tubular_button($variables) {
     'fragment' => FALSE,
     'external' => TRUE,
     'attributes' => array(
-      'id' => $button['cssId']  
+      'class' => array('btn-tubular', $button['class']),  
     ),
   ));
 }

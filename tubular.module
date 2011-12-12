@@ -141,15 +141,15 @@ function tubular_buttons() {
   return array(
     'pause' => array(
       'title' => t('Play/Pause'),
-      'cssId' => 'videoPause',
+      'class' => 'videoPause',
     ),
     'stop' => array(
       'title' => t('Stop'),
-      'cssId' => 'videoStop',
+      'class' => 'videoStop',
     ),
     'mute' => array(
       'title' => t('Mute'),
-      'cssId' => 'videoMute',
+      'class' => 'videoMute',
     ),
   );
 }
