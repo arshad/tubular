@@ -43,5 +43,16 @@ function tubular_admin_settings() {
     '#default_value' => variable_get('tubular_buttons', array()),
   );
   
+  $form['tubular_buttons_positions'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Position of the Tubular buttons'),
+    '#description' => t('Where to show the buttons on the page.'),
+    '#options' => array(
+      'absolute' => t('Absolute'),
+      'block' => t('In a block'),
+    ),
+    '#default_value' => variable_get('tubular_buttons_positions', array()),
+  );
+  
   return system_settings_form($form);
 }

@@ -13,12 +13,14 @@
  */
 function theme_tubular_buttons($variables) {
   $buttons = $variables['buttons'];
+  $position = $variables['position'];
   $output = '';
   
-  $output .= '<ul id="tubular-buttons">';
+  $output .= '<ul id="tubular-buttons" class="tubular-position-' . $position . '">';
   foreach ($buttons as $button) {
     $output .= '<li>' . theme('tubular_button', array('button' => $button)) . '</li>';
   }
+  $output .= '</ul>';
   
   return $output;
 }
