@@ -9,15 +9,17 @@
  * Implements hook_init().
  */
 function tubular_init() {
-  drupal_add_js(tubular_swfobject_js_path());
-  drupal_add_js(tubular_js_path());
-  drupal_add_js(array(
-    'tubular' => array(
-      'videoID' => variable_get('tubular_video_id', ''),
-      'wrapperID' => variable_get('tubular_wrapper_id', ''),
-    ),
-  ), 'setting');
-  drupal_add_js(drupal_get_path('module', 'tubular') . '/tubular.js');
+  if (drupal_match_path(current_path(), variable_get('tubular_pages')) && variable_get('tubular_video_id', '') != '' && variable_get('tubular_wrapper_id', '') != '') {
+    drupal_add_js(tubular_swfobject_js_path());
+    drupal_add_js(tubular_js_path());
+    drupal_add_js(array(
+      'tubular' => array(
+        'videoID' => variable_get('tubular_video_id', ''),
+        'wrapperID' => variable_get('tubular_wrapper_id', ''),
+      ),
+    ), 'setting');
+    drupal_add_js(drupal_get_path('module', 'tubular') . '/tubular.js');
+  }
 }
 
 /**
