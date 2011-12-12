@@ -35,5 +35,13 @@ function tubular_admin_settings() {
     '#required' => TRUE,
   );
   
+  $form['tubular_buttons'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enable the following buttons'),
+    '#description' => t('Control buttons for the video'),
+    '#options' => tubular_buttons_options(),
+    '#default_value' => variable_get('tubular_buttons', array()),
+  );
+  
   return system_settings_form($form);
 }

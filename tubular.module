@@ -52,6 +52,31 @@ function tubular_is_enabled() {
     && variable_get('tubular_wrapper_id', '') != '');
 }
 
+function tubular_buttons() {
+  return array(
+    'pause' => array(
+      'title' => t('Play/Pause'),
+      'cssId' => 'videoPause',
+    ),
+    'stop' => array(
+      'title' => t('Stop'),
+      'cssId' => 'videoStop',
+    ),
+    'mute' => array(
+      'title' => t('Mute'),
+      'cssId' => 'videoMute',
+    ),
+  );
+}
+
+function tubular_buttons_options() {
+  $options = array();
+  foreach (tubular_buttons() as $key => $button) {
+    $options[$key] = $button['title'];
+  }
+  return $options;
+}
+
 /**
  * Returns the path to the Tubular JavaScript file.
  *
